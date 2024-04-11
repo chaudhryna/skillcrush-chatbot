@@ -14,8 +14,12 @@ messages = [
     {"role": "user", "content": user_input},
 ]
 
-response = client.chat.completions.create(model=model, messages=messages)
 
-response_for_user = response.choices[0].message.content
+def get_response(model, messages):
+    response = client.chat.completions.create(model=model, messages=messages)
+    response_for_user = response.choices[0].message.content
+    return response_for_user
 
-print("\n" + response_for_user + "\n")
+
+print("\n" + get_response(model, messages) + "\n")
+
